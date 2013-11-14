@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
 	<link href="style.css" rel="stylesheet" />
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -19,15 +20,23 @@
       });
 
       // CALL THE DROP DOWN MENU
-        var drop = $('.unit-options');
-  
-        $('.units').click(function() {
-          $(drop).animate({'top' : '0px'});
-        });
-        // CLOSE THE DROP DOWN MENU
-        $('.close, .off').click(function() {
-          stop();
-            $(drop).animate({'top' : '-500px'});
+      var drop = $('.unit-options');
+
+      $('.units').click(function() {
+        $(drop).animate({'top' : '0px'});
+      });
+
+      // CLOSE THE DROP DOWN MENU
+      $('.close, .off').click(function() {
+        stop();
+          $(drop).animate({'top' : '-500px'});
+      });
+
+      //CALL RESET FOR X & Y LINES
+      $('.reset').click(function() {
+        $('.draggable').offset({ top: 25 });
+        $('.draggable2').offset({ left : 25 });
+        $('.pos').css({'display' : 'none'});
       });
 
       // CALL EVENT TO DISPLAY X AND Y LINES
@@ -48,7 +57,7 @@
                $(this).find($('.pos')).css('display','block');
            },
            stop: function() {
-               $(this).find($('.pos')).css('display','none');
+               $(this).find($('.pos')).css('display','block');
           }                                   
       });
 
@@ -65,7 +74,7 @@
                $(this).find($('.pos')).css('display','block');
            },
            stop: function() {
-               $(this).find($('.pos')).css('display','none');
+               $(this).find($('.pos')).css('display','block');
           }            
       });
       //CALL IN COLOR OPTION SECTION
@@ -110,7 +119,10 @@
         $('.draggable2').css({'border-right' : '2px solid purple'});
       });
 
-
+      
+        /*$('.draggable').click(function() {
+          $('iframe').css({'z-index' : '-9'})
+        });*/
 
 	});
 </script>
@@ -118,52 +130,71 @@
 </head>
 <body>
 
-<button class="on">
-  A-line
-</button>
+<!-- INITIATE A-LINE -->
+    <button class="on">
+      A-line
+    </button>
 
-    <div class="canvas">
-    	<!-- CALL RULER SECTIONS --> 
-    	<div class="ruler-top"></div>
-    	<div class="ruler-left"></div>
+      
+        <!-- CANVAS SECTION -->
+        <div class="canvas">
+        	<!-- CALL RULER SECTIONS --> 
+        	<div class="ruler-top"></div>
+        	<div class="ruler-left"></div>
 
-    	<!-- UNITS SECTION -->
-    	<div class='units'></div>
-    		<div class='unit-options'>
-    			<p>Options</p>
-    					<img class='close' src="images/close.png" alt="" />
-                <ul>
-                  <li class="unit">Units</li>
-                    <div class="unit-list">
-                      <li>Pixels</li>
-                      <li>Ems</li>
-                      <li>Percent</li>
-                      <li>Inches</li>
+        	<!-- UNITS SECTION -->
+        	<div class='units'></div>
+        		<div class='unit-options'>
+        			<p>Options</p>
+        					<img class='close' src="images/close.png" alt="" />
+                    <ul>
+                      <li class="unit">Units</li>
+                        <div class="unit-list">
+                          <li>Pixels</li>
+                          <li>Ems</li>
+                          <li>Percent</li>
+                          <li>Inches</li>
+                        </div>
+                      <li class="color">Color</li>  
+                    </ul>
+                      <!-- CALL IN COLOR OPTIONS -->
+                      <div class="color-list">
+                        <div class="color-option red"></div>
+                        <div class="color-option blue"></div>
+                        <div class="color-option orange"></div>
+                        <div class="color-option green"></div>
+                        <div class="color-option yellow"></div>
+                        <div class="color-option purple"></div>
+                      </div>
+                    <div class="page-link">
+                      <input type="text" value="" placeholder="Insert Link" />
                     </div>
-                  <li class="color">Color</li>  
-                </ul>
-                  
-                  <div class="color-list">
-                    <div class="color-option red"></div>
-                    <div class="color-option blue"></div>
-                    <div class="color-option orange"></div>
-                    <div class="color-option green"></div>
-                    <div class="color-option yellow"></div>
-                    <div class="color-option purple"></div>
-                  </div>
-              <button class="off">
-                Off
-              </button>
-    	</div>
 
-    	<!-- CALL X AND Y LINES -->
-    	<div class="draggable">
-    	    <span class="pos"></span>
-    	</div>
-    	<div class="draggable2">
-    	    <span class="pos"></span>
-    	</div>
-    </div>
+                  <button class="reset">
+                    Reset
+                  </button>
+                  <button class="off">
+                    Off
+                  </button>
+        	</div>
+
+        	<!-- CALL X AND Y LINES -->
+        	<div class="draggable">
+        	    <span class="pos"></span>
+        	</div>
+        	<div class="draggable2">
+        	    <span class="pos"></span>
+        	</div>
+
+          <div class="main">
+            <iframe src="http://localhost/bms_express/">
+              
+          </iframe>
+          </div>
+        </div>
+          
+
+
 
 </body>
 </html>
